@@ -31,6 +31,7 @@ class MovieDatabase:
         self.filename = os.path.join('data', 'movies.csv')
         if not os.path.exists(self.filename):
             df = pd.DataFrame(columns=['Filma', 'Kritiķu vērtējums'])
+            os.makedirs("data", exist_ok=True)
             df.to_csv(self.filename, index=False)
         self.data = pd.read_csv(self.filename)
 
@@ -71,6 +72,7 @@ class RatingDatabase:
         self.filename = os.path.join('data', 'ratings.csv')
         if not os.path.exists(self.filename):
             df = pd.DataFrame(columns=['Laiks', 'Lietotājs', 'Filma', 'Lietotāja vērtējums', 'Kritiķu vērtējums'])
+            os.makedirs("data", exist_ok=True)
             df.to_csv(self.filename, index=False)
         self.data = pd.read_csv(self.filename)
 
