@@ -1,0 +1,87 @@
+{% extends "_base.html" %}
+
+{% block title %}Vērtē{% endblock %}
+
+
+
+{% block content %}
+
+<style>
+
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+
+#floatingUser {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#floatingMovie, #floatingYear {
+  margin-bottom: -1px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#floatingUserRating {
+  margin-bottom: 3px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.form-control, .form-signin {
+  background-color: inherit;
+  color: inherit;
+}
+
+</style>
+
+    <main class="form-signin w-100 m-auto">
+      <form method="POST" action="/salīdzini">
+        <h1>Vērtē</h1>
+        <p class="important">
+            Lūdzu ievadiet savu lietotāja vārdu, jūsu izvēlētās filmas nosaukumu (angliski), tās izdošanas gadu (nav obligāti) un savu vērtējumu tai, lai salīdzinātu ar kritiķu vērtējumu:
+        </p>
+    
+        <div class="form-floating">
+          <input type="text" name='user' class="form-control" id="floatingUser" placeholder="Lietotājs">
+          <label for="floatingUser">Lietotājs</label>
+        </div>
+        
+        <div class="form-floating">
+          <input type="text" name='movie' class="form-control" id="floatingMovie" placeholder="Filma">
+          <label for="floatingMovie">Filma</label>
+        </div>
+
+        <div class="form-floating">
+            <input type="number" name='year' class="form-control" id="floatingYear" placeholder="Gads" min="1900" max="2100">
+            <label for="floatingYear">Gads</label>
+        </div>
+        
+        <div class="form-floating">
+            <input type="number" name='user_rating' class="form-control" id="floatingUserRating" placeholder="Vērtējums" min="0" max="100">
+            <label for="floatingUserRating">Vērtējums</label>
+        </div>
+    
+        <button class="btn btn-primary w-100 py-2" type="submit">Salīdzināt</button>
+
+      </form>
+
+  {% if error %}
+      <p class="important" style="color: red;">
+          Jūsu ievadītā informācija ir izraisījusi kļūdu (visticamāk filmas nosaukums ar šādu gadu neeksistē).
+      </p>
+  {% endif %}
+
+
+    </main>
+{% endblock %}

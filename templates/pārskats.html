@@ -1,0 +1,9 @@
+{% extends "_base.html" %}
+
+{% block title %}Pārskats{% endblock %}
+
+{% block content %}
+    <h1>Pārskats</h1>
+    <p class="lead">Mūsu lietotāju vidējais vērtējums: {{ user_rating_avg }}</p>
+    <p class="lead">Kritiķu vidējais vērtējums: {{ critics_rating_avg }}</p>
+{% endblock %}
